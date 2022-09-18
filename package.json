@@ -1,15 +1,23 @@
 {
-  "name": "git-statistic",
+  "name": "@tegor/git-statistic",
   "version": "1.0.0",
   "description": "",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "bin": {
+    "git-stat": "./bin/git-stat.cjs"
+  },
   "scripts": {
     "dev": "rollup -w -c",
     "build": "rimraf dist && rollup -c",
     "test": "vitest",
     "preview": "pnpm run build && pnpm run stat",
-    "stat": "node ./dist/index.cjs"
+    "stat": "node ./dist/index.cjs",
+    "release": "pnpm publish --access public"
   },
   "keywords": [],
   "author": "",
