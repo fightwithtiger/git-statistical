@@ -2,11 +2,33 @@
   "name": "git-statistic",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "scripts": {
-    "stat": "node index.js"
+    "dev": "rollup -w -c",
+    "build": "rimraf dist && rollup -c",
+    "test": "vitest",
+    "preview": "pnpm run build && pnpm run stat",
+    "stat": "node ./dist/index.cjs"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/plugin-external-helpers": "^7.16.7",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@babel/types": "^7.17.0",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^21.0.3",
+    "@rollup/plugin-node-resolve": "^13.2.0",
+    "cross-env": "^7.0.3",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.70.1"
+  },
+  "devDependencies": {
+    "vitest": "^0.23.2"
+  }
 }
