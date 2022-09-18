@@ -1,6 +1,6 @@
 {
   "name": "@tegor/git-statistic",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
@@ -17,7 +17,8 @@
     "test": "vitest",
     "preview": "pnpm run build && pnpm run stat",
     "stat": "node ./dist/index.cjs",
-    "release": "pnpm publish --access public"
+    "release": "pnpm publish --access public",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
