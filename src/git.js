@@ -32,7 +32,6 @@ export function getCodeChangeStat(execSync, branch, author, since, until) {
 
   let added = 0
   let removed = 0
-  console.log('line', lines, author, since, until)
   lines.forEach(e => {
     const sp = e.split('\t')
     added += (isNaN(Number(sp[0])) ? 0 : Number(sp[0]))
