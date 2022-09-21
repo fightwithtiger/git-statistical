@@ -20,7 +20,7 @@
     "release": "pnpm run build && pnpm publish --access public",
     "lint": "eslint ."
   },
-  "keywords": [],
+  "keywords": [ "git", "log", "codes change"],
   "author": "",
   "license": "ISC",
   "dependencies": {
