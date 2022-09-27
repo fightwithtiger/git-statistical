@@ -12,6 +12,7 @@ import { getFormatDate, defineExecSync, mergeOptions } from './utils'
 export async function runStatistic (options) {
   const baseOptions = await createBaseOptions()
   options = mergeOptions(baseOptions, options)
+  console.log('2222222222', options)
 
   const execSync = await defineExecSync()
   const authorStat = getCodeChangeStat(execSync, options)
