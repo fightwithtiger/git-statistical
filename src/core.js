@@ -10,7 +10,7 @@ import {
 import { getFormatDate, defineExecSync, mergeOptions } from './utils'
 
 export async function runStatistic (options) {
-  const baseOptions = await createBaseOptions()
+  const baseOptions = await createBaseOptions(options.branch)
   options = mergeOptions(baseOptions, options)
   console.log('2222222222', options)
 
@@ -18,14 +18,14 @@ export async function runStatistic (options) {
   const authorStat = getCodeChangeStat(execSync, options)
   const allStat = getCodeChangeStat(execSync, options, true)
   const tableContent = getStatistcalContent(authorStat, allStat, options)
-
   drawTable(tableContent)
 }
 
-async function createBaseOptions() {
+async function createBaseOptions(_branch) {
   const execSync = await defineExecSync()
   const author = getAuthor(execSync)
-  const branch = getCurrentBranch(execSync)
+  const branch = _branch || getCurrentBranch(execSync)
+  
   const since = getBranchCreateTime(execSync, branch)
   const until = getFormatDate(new Date())
 

@@ -14,7 +14,7 @@ export function getCurrentBranch (execSync) {
 }
 
 export function getBranchCreateTime (execSync, branch) {
-  const sp = execSync(`git reflog show --date=iso ${branch}`)
+  const sp = execSync(`git reflog show --date=iso ${branch} --`)
     .toString()
     .trim()
     .split('\n')
@@ -24,7 +24,9 @@ export function getBranchCreateTime (execSync, branch) {
 
 export function getCodeChangeStat (execSync, options, all = false) {
   const { author, branch, since, until } = options
-  const lines = execSync(`git log ${branch} --author="${all ? '' : author}" --since="${since}" --until="${until}" --pretty=tformat: --numstat`)
+  const str = `git log --author="${all ? '' : author}" --since="${since}" --until="${until}" --pretty=tformat: --numstat ${branch} --`
+
+  const lines = execSync(str)
     .toString()
     .trim()
     .split('\n')
