@@ -1,6 +1,6 @@
 {
   "name": "@tegor/git-statistic",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -17,7 +17,7 @@
     "build": "rimraf dist && rollup -c",
     "test": "vitest",
     "preview": "pnpm run build && pnpm run stat",
-    "stat": "node ./dist/index.cjs",
+    "stat": "node ./bin/git-stat.cjs",
     "release": "pnpm run build && pnpm publish --access public",
     "lint": "eslint ."
   },
