@@ -1,21 +1,29 @@
 import { program } from 'commander'
+import pc from "picocolors"
 import { runStatistic } from './index'
 
 run()
 
-function run() {
+function run () {
   program
-    .description('description')
-    .option('-a, --author <author>', 'author')
-    .option('-b, --branch <branch>', 'branch')
-    .option('-s, --since <since>', 'sicne')
-    .option('-u, --until <until>', 'until')
-    .action(excuteAction)
-  
+    .description(pc.yellow('git statistic'))
+    .usage(pc.yellow('<command> [options]'))
+    .option('-a, --author <author>', 'which author ')
+    .option('-b, --branch <branch>', 'which branch')
+    .option('-s, --since <since>', 'statiscal sicne time, format: YYYY-MM-DD HH-mm-ss')
+    .option('-u, --until <until>', 'statiscal until time, format: YYYY-MM-DD HH-mm-ss')
+    .action(excute)
+
   program.parse();
 }
 
-function excuteAction() {
-  const options = program.opts()
-  runStatistic(options)
+async function excute () {
+  try {
+    const options = program.opts()
+    await runStatistic(options)
+    process.exit(0)
+  } catch (e) {
+    console.log(pc.bgRed(e.name), pc.bgRed(e.message))
+    process.exit(1)
+  }
 }

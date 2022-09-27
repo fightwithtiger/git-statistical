@@ -10,19 +10,15 @@ import {
 import { getFormatDate, defineExecSync, mergeOptions } from './utils'
 
 export async function runStatistic (options) {
-  try {
-    const baseOptions = await createBaseOptions()
-    options = mergeOptions(baseOptions, options)
+  const baseOptions = await createBaseOptions()
+  options = mergeOptions(baseOptions, options)
 
-    const execSync = await defineExecSync()
-    const authorStat = getCodeChangeStat(execSync, options)
-    const allStat = getCodeChangeStat(execSync, options, true)
-    const tableContent = getStatistcalContent(authorStat, allStat, options)
+  const execSync = await defineExecSync()
+  const authorStat = getCodeChangeStat(execSync, options)
+  const allStat = getCodeChangeStat(execSync, options, true)
+  const tableContent = getStatistcalContent(authorStat, allStat, options)
 
-    drawTable(tableContent)
-  } catch (e) {
-    console.error(e)
-  }
+  drawTable(tableContent)
 }
 
 async function createBaseOptions() {

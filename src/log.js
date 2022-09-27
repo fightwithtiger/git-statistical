@@ -1,3 +1,5 @@
+import pc from "picocolors"
+
 export function drawTable(arrMap) {
   function getRealLength(str) {
     let length = 0
@@ -57,5 +59,5 @@ export function drawTable(arrMap) {
     return `|${e.key}|${e.val}|\n`
   }).join(divider)
 
-  console.log(`${divider}${str}${divider}`)
+  console.log(pc.green(`${divider}${str}${divider}`))
 }

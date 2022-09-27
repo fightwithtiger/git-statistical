@@ -10,7 +10,7 @@ const resolve = (...args) => path.resolve(...args);
 
 const config = [
   {
-    input: resolve('./src/index.js'),
+    input: resolve('./src/run.js'),
     output: [
       {
         file: resolve('./', pkg.module),
@@ -27,11 +27,13 @@ const config = [
       commonjs(),
       babel({
         extensions,
+        exclude: 'node_modules/**',
       }),
       nodeResolve({
         extensions,
       }),
-    ]
+    ],
+    external: [/node_modules/],
   },
 ];
 

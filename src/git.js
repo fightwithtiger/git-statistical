@@ -1,10 +1,10 @@
-export function getAuthor(execSync) {
+export function getAuthor (execSync) {
   return execSync('git config user.name')
     .toString()
     .trim()
 }
 
-export function getCurrentBranch(execSync) {
+export function getCurrentBranch (execSync) {
   return execSync('git branch')
     .toString()
     .trim()
@@ -13,7 +13,7 @@ export function getCurrentBranch(execSync) {
     .replace('* ', '')
 }
 
-export function getBranchCreateTime(execSync, branch) {
+export function getBranchCreateTime (execSync, branch) {
   const sp = execSync(`git reflog show --date=iso ${branch}`)
     .toString()
     .trim()
@@ -22,7 +22,7 @@ export function getBranchCreateTime(execSync, branch) {
   return `${times[0]} ${times[1]}`
 }
 
-export function getCodeChangeStat(execSync, options, all=false) {
+export function getCodeChangeStat (execSync, options, all = false) {
   const { author, branch, since, until } = options
   const lines = execSync(`git log ${branch} --author="${all ? '' : author}" --since="${since}" --until="${until}" --pretty=tformat: --numstat`)
     .toString()
@@ -36,6 +36,12 @@ export function getCodeChangeStat(execSync, options, all=false) {
     added += (isNaN(Number(sp[0])) ? 0 : Number(sp[0]))
     removed += (isNaN(Number(sp[1])) ? 0 : Number(sp[1]))
   })
-  
-  return [added, removed, lines.length]
+
+  const files = lines.length > 0 
+                  ? lines[0] !== '' 
+                    ? lines.length
+                    : 0
+                  : 0
+
+  return [added, removed, files]
 }
