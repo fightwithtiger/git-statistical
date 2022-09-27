@@ -2,9 +2,7 @@ import { program } from 'commander'
 import pc from "picocolors"
 import { runStatistic } from './index'
 
-run()
-
-function run () {
+export function run () {
   program
     .description(pc.yellow('git statistic'))
     .usage(pc.yellow('<command> [options]'))
