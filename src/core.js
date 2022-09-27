@@ -14,10 +14,11 @@ export async function runStatistic (options) {
   options = mergeOptions(baseOptions, options)
 
   const execSync = await defineExecSync()
+  console.log('22222222', options)
   const authorStat = getCodeChangeStat(execSync, options)
   const allStat = getCodeChangeStat(execSync, options, true)
   const tableContent = getStatistcalContent(authorStat, allStat, options)
-
+  console.log('11111111111', tableContent)
   drawTable(tableContent)
 }
 
