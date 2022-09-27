@@ -18,3 +18,7 @@ export function getFormatDate(time) {
 
   return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`
 }
+
+export function mergeOptions(base, options) {
+  return Object.assign(base, options)
+}

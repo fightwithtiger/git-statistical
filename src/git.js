@@ -1,5 +1,3 @@
-
-
 export function getAuthor(execSync) {
   return execSync('git config user.name')
     .toString()
@@ -24,8 +22,9 @@ export function getBranchCreateTime(execSync, branch) {
   return `${times[0]} ${times[1]}`
 }
 
-export function getCodeChangeStat(execSync, branch, author, since, until) {
-  const lines = execSync(`git log ${branch} --author="${author}" --since="${since}" --until="${until}" --pretty=tformat: --numstat`)
+export function getCodeChangeStat(execSync, options, all=false) {
+  const { author, branch, since, until } = options
+  const lines = execSync(`git log ${branch} --author="${all ? '' : author}" --since="${since}" --until="${until}" --pretty=tformat: --numstat`)
     .toString()
     .trim()
     .split('\n')

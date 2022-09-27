@@ -1,5 +1,1 @@
-import { run } from './core'
-
-export {
-  run
-}
+export * from './core'

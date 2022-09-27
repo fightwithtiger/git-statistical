@@ -2,6 +2,7 @@
   "name": "@tegor/git-statistic",
   "version": "0.0.3",
   "description": "",
+  "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "files": [
@@ -20,7 +21,11 @@
     "release": "pnpm run build && pnpm publish --access public",
     "lint": "eslint ."
   },
-  "keywords": [ "git", "log", "codes change"],
+  "keywords": [
+    "git",
+    "log",
+    "codes change"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -33,6 +38,7 @@
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^21.0.3",
     "@rollup/plugin-node-resolve": "^13.2.0",
+    "commander": "^9.4.0",
     "cross-env": "^7.0.3",
     "rimraf": "^3.0.2",
     "rollup": "^2.70.1"
